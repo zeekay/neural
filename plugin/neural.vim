@@ -30,14 +30,19 @@ if !s:has_features
 endif
 
 " Have Neural write to the buffer given a prompt.
+command! -nargs=? AI :call neural#Prompt(<q-args>)
 command! -nargs=? Neural :call neural#Prompt(<q-args>)
 " Stop Neural doing anything.
+command! -nargs=0 AIStop :call neural#Stop()
 command! -nargs=0 NeuralStop :call neural#Stop()
 " Create a completion buffer.
+command! -nargs=? AIBuffer :call neural#buffer#CreateBuffer(<q-args>)
 command! -nargs=? NeuralBuffer :call neural#buffer#CreateBuffer(<q-args>)
 " Have Neural explain the visually selected lines.
+command! -range AIExplain :call neural#explain#SelectedLines()
 command! -range NeuralExplain :call neural#explain#SelectedLines()
 " Have Neural print the prompt that will be sent.
+command! -nargs=? AIPrompt :call neural#ViewPrompt(<f-args>)
 command! -nargs=? NeuralViewPrompt :call neural#ViewPrompt(<f-args>)
 
 " <Plug> mappings for commands
